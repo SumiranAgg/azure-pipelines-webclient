@@ -24,7 +24,7 @@ export async function getHandler(): Promise<IAuthorizationHandler> {
 
     if(code == 0 && !!resp && !!resp.id) {
         await AzAuthInitializer.initialize();
-        return AzCliAuthHandler.getEndpoint();
+        return AzCliAuthHandler.getEndpoint(resp.id);
     }
     else if(fileExist) {
         return AzureEndpoint.getEndpoint(authFilePath);
